@@ -1,0 +1,44 @@
+doctype
+html
+    head
+        title My Project
+        link(rel="stylesheet", href="/lib/bootstrap/dist/css/bootstrap.css")
+        link(rel="stylesheet", href="/lib/toastr/toastr.css")
+        link(rel="stylesheet", href="/css/site.css")
+
+    body
+        header
+            nav.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top
+                a.navbar-brand(href="/") File Upload
+                button.navbar-toggler(type="button", data-toggle="collapse", data-target="#navbar", aria-controls="navbar", aria-expanded="false", aria-label="Toggle navigation")
+                    span.navbar-toggler-icon
+                #navbar.collapse.navbar-collapse
+                    ul.navbar-nav.mr-auto.mt-2.mt-lg-0
+                        li.nav-item.active
+                            a.nav-link(href="/") Home
+                                span.sr-only (current)
+                        if (currentUser)
+                            li.nav-item
+                                a.nav-link(href="/profile") My profile
+                            li.nav-item
+                                a.nav-link(href="/logout") Logout
+                        else
+                            li.nav-item
+                                a.nav-link(href="/register") Register
+                            li.nav-item
+                                a.nav-link(href="/login") Login                           
+
+
+
+
+        .container
+            if (errorMessage)
+                .alert.alert-danger #{errorMessage}
+
+            block main-content
+
+        footer
+            p.text-center
+                | &copy; Georgi Yonchev 2018
+
+        include scripts
